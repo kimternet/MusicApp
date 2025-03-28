@@ -4,7 +4,7 @@ import 'package:client/features/auth/view/widgets/custom_field.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
 import 'package:client/features/auth/repositories/auth_remote_repository.dart';
 import 'package:client/features/auth/view/pages/login_page.dart';
-
+import 'package:fpdart/fpdart.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -56,11 +56,18 @@ class _SignupPageState extends State<SignupPage> {
               AuthGradientButton(
                 buttonText: '가입하기',
                 onTap: () async {
-                  await AuthRemoteRepository().signup(
+                  final res = await AuthRemoteRepository().signup(
                     name: nameController.text,
                     email: emailController.text,
                     password: passwordController.text,
                   );
+
+                  final val = switch (res) {
+                    Left(value: final l) => l,
+                    Right(value: final r) => r.toString(),
+                  };
+                  // ignore: avoid_print
+                  print(val);
                 },
               ),
               const SizedBox(height: 20),
