@@ -1,10 +1,16 @@
 import 'package:client/core/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'features/auth/view/pages/signup_page.dart'; 
+import 'features/auth/view/pages/signup_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 //import 'features/auth/view/pages/login_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
