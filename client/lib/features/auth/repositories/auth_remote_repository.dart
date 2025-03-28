@@ -10,46 +10,37 @@ class AuthRemoteRepository {
     required String email,
     required String password,
   }) async {
-    final response = await http.post(
-      Uri.parse(
-        // 안드로이드는 10.0.2.2:8000 이라고 해야 함
+    try {
+      final response = await http.post(
+        Uri.parse(
+          // 안드로이드는 10.0.2.2:8000 이라고 해야 함
         'http://10.0.2.2:8000/auth/signup',
-        ),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode(
-        {
-        'name': name, 
-        'email': email, 
-        'password': password
-        },
       ),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({'name': name, 'email': email, 'password': password}),
     );
     logger.i('Response body: ${response.body}');
-    logger.i('Status code: ${response.statusCode}');
+      logger.i('Status code: ${response.statusCode}');
+    } catch (e) {
+      logger.e('Error: $e');
+    }
   }
 
-  Future<void> login({
-    required String email,
-    required String password,
-  }) async {
-    final response = await http.post(
-      Uri.parse(
-        // 안드로이드는 10.0.2.2:8000 이라고 해야 함
-        'http://10.0.2.2:8000/auth/login',
+  Future<void> login({required String email, required String password}) async {
+    try {
+      final response = await http.post(
+        Uri.parse(
+          // 안드로이드는 10.0.2.2:8000 이라고 해야 함
+          'http://10.0.2.2:8000/auth/login',
         ),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode(
-        {
-        'email': email, 
-        'password': password
-        },
-      ),
-    );
-    logger.i('Response body: ${response.body}');
-    logger.i('Status code: ${response.statusCode}');
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'email': email, 'password': password}),
+      );
+      logger.i('Response body: ${response.body}');
+      logger.i('Status code: ${response.statusCode}');
+
+    } catch (e) {
+      logger.e('Error: $e');
+    }
   }
 }
