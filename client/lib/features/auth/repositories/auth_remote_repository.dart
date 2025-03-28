@@ -44,7 +44,6 @@ class AuthRemoteRepository {
     try {
       final response = await http.post(
         Uri.parse(
-          // 안드로이드는 10.0.2.2:8000 이라고 해야 함
           '${ServerConstant.serverUrl}/auth/login',
         ),
         headers: {'Content-Type': 'application/json'},
