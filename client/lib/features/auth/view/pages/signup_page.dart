@@ -2,6 +2,9 @@ import 'package:client/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:client/features/auth/view/widgets/custom_field.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
+import 'package:client/features/auth/repositories/auth_remote_repository.dart';
+import 'package:client/features/auth/view/pages/login_page.dart';
+
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -22,7 +25,6 @@ class _SignupPageState extends State<SignupPage> {
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
-    formKey.currentState!.validate(); 
   }
 
   @override
@@ -53,22 +55,38 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(height: 20),
               AuthGradientButton(
                 buttonText: '가입하기',
-                onTap: () {},
+                onTap: () async {
+                  await AuthRemoteRepository().signup(
+                    name: nameController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+                },
               ),
               const SizedBox(height: 20),
-              RichText(
-                text: TextSpan(
-                  text: '이미 계정이 있으신가요? ',
-                  style: Theme.of(context).textTheme.titleMedium,
-                  children: const[
-                    TextSpan(
-                      text: '로그인',
-                      style: TextStyle(
-                        color: Pallete.gradient2,
-                        fontWeight: FontWeight.bold,
-                      ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
                     ),
-                  ],
+                  );
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text: '이미 계정이 있으신가요? ',
+                    style: Theme.of(context).textTheme.titleMedium,
+                    children: const[
+                      TextSpan(
+                        text: '로그인',
+                        style: TextStyle(
+                          color: Pallete.gradient2,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
