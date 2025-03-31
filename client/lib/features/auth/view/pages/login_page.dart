@@ -1,15 +1,13 @@
 import 'package:client/core/theme/app_pallete.dart';
-// import 'package:client/core/widgets/loader.dart';
+import 'package:client/core/utils.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
-// import 'package:client/core/widgets/custom_field.dart';
+import 'package:client/features/auth/view/widgets/custom_field.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
-// import 'package:client/features/home/view/pages/home_page.dart';
+import 'package:client/features/home/view/pages/home_page.dart';
+import 'package:client/core/widgets/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:client/widgets/loader.dart';
-import 'package:client/features/auth/view/widgets/custom_field.dart';
-import 'package:client/core/utils.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -33,25 +31,20 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final isLoading = ref
-        .watch(authViewModelProvider.select((val) => val?.isLoading == true));
+        .watch(authViewModelProvider.select((val) => val.isLoading == true));
 
     ref.listen(
       authViewModelProvider,
       (_, next) {
-        next?.when(
+        next.when(
           data: (data) {
-            showSnackBar(
+            Navigator.pushAndRemoveUntil(
               context,
-              'login success!',
+              MaterialPageRoute(
+                builder: (context) => const HomePage(),
+              ),
+              (_) => false,
             );
-            // TODO: 홈 페이지로 이동
-            // Navigator.pushAndRemoveUntil(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => const HomePage(),
-            //   ),
-            //   (route) => false,
-            // );
           },
           error: (error, st) {
             showSnackBar(context, error.toString());
@@ -102,7 +95,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 password: passwordController.text,
                               );
                         } else {
-                          // showSnackBar(context, 'Missing fields!');
+                          showSnackBar(context, 'Missing fields!');
                         }
                       },
                     ),
