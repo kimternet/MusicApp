@@ -2,7 +2,7 @@ import 'package:client/core/theme/app_pallete.dart';
 import 'package:client/core/utils.dart';
 import 'package:client/features/auth/view/pages/signup_page.dart';
 import 'package:client/features/auth/view/widgets/auth_gradient_button.dart';
-import 'package:client/features/auth/view/widgets/custom_field.dart';
+import 'package:client/core/widgets/custom_field.dart';
 import 'package:client/features/auth/viewmodel/auth_viewmodel.dart';
 import 'package:client/features/home/view/pages/home_page.dart';
 import 'package:client/core/widgets/loader.dart';
