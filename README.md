@@ -1,8 +1,9 @@
 # Flutter와 FastAPI를 이용한 음악 스트리밍 프로젝트
 
+![Image](https://github.com/user-attachments/assets/7a2ead01-f3ee-4c57-a9ca-a9c173139516)
+
 ## 프로젝트 개요
 본 프로젝트는 **Flutter 프레임워크**와 **FastAPI** 백엔드 기술, **PostgreSQL DB**, **Cloudinary** 을 활용하여 **음악 스트리밍 애플리케이션**을 구축했습니다. MVVM (Model-View-ViewModel) 아키텍처를 기반으로 사용자 인증부터 백그라운드 음악 재생까지 다양한 기능을 구현했습니다.
-![Image](https://github.com/user-attachments/assets/7a2ead01-f3ee-4c57-a9ca-a9c173139516)
 ## 주요 기능
 다음과 같은 주요 기능을 구현했습니다.
 - **사용자 인증:** 로그인 및 회원 가입 기능
