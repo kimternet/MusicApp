@@ -28,6 +28,11 @@ class AuthLocalRepository {
     
     return _sharedPreferences.getString('x-auth-token');
   }
+
+  Future<void> removeToken() async {
+    await init();
+    await _sharedPreferences.remove('x-auth-token');
+  }
 }
 
 @riverpod

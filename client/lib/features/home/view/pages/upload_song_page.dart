@@ -74,7 +74,7 @@ class _UploadSongPageState extends ConsumerState<UploadSongPage> {
                       selectedThumbnail: selectedImage!,
                       songName: songNameController.text,
                       artist: artistController.text,
-                      hexCode: rgbToHex(selectedColor),
+                      selectedColor: selectedColor,
                     );
               } else {
                 showSnackBar(context, 'Please fill all the fields');

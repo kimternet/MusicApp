@@ -6,6 +6,11 @@ class Pallete {
   static const subtitleText = Color(0xffa7a7a7);
   static const inactiveBottomBarItemColor = Color(0xffababab);
 
+  // Spotify Colors
+  static const spotifyGreen = Color(0xff1DB954);
+  static const spotifyDarkBlack = Color(0xff121212);
+  static const spotifyCardColor = Color(0xff282828);
+  
   static const Color backgroundColor = Color.fromRGBO(18, 18, 18, 1);
   static const Color gradient1 = Color.fromRGBO(187, 63, 221, 1);
   static const Color gradient2 = Color.fromRGBO(251, 109, 169, 1);
