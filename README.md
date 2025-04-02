@@ -1,7 +1,7 @@
 # Flutter와 FastAPI를 이용한 음악 스트리밍 프로젝트
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/fc0f1566-0628-4551-985a-1992715e3c08" alt="Image" width="30%">
+  <img src="https://github.com/user-attachments/assets/fc0f1566-0628-4551-985a-1992715e3c08" alt="Image" width="10%">
 </p>
 
 ## 프로젝트 개요
